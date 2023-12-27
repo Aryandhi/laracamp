@@ -10,5 +10,12 @@ class Checkout extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['camp_id', 'user_id', 'card_number', 'expired', 'cvc', 'is_paid',];
+    protected $fillable = [
+        'camp_id', 
+        'user_id', 
+        'card_number', 
+        'expired', 
+        'cvc', 
+        'is_paid'
+    ];
 }
