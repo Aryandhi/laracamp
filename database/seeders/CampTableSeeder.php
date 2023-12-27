@@ -1,0 +1,44 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+use App\Models\Camp;
+
+// use Str;  -> library for auto generate slug
+class CampTableSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        $camps = [
+            [
+                'title' => 'Gila Belajar',
+                'slug' => 'gila-belajar',
+                'price' => 280,
+                'created_at' => date('Y-m-d H:i:s', time()),
+                'updated_at' => date('Y-m-d H:i:s', time()),
+                // 'slugs' => Str::slug('Gila belajar') -> for auto generate slug
+            ],
+            [
+                'title' => 'Baru Mulai',
+                'slug' => 'baru-mulai',
+                'price' => 140,
+                'created_at' => date('Y-m-d H:i:s', time()),
+                'updated_at' => date('Y-m-d H:i:s', time()),
+            ]
+        ];
+        
+        // if you using these method you can takeout created_at and updated_at
+        // 1st method, 
+        // foreach ($camps as $key => $camp) {
+        //     Camp::create($camp);
+        // }
+
+        // 2nd method
+        Camp::insert($camps);
+    }
+}
