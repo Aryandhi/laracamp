@@ -6,9 +6,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Camp extends Model
+class Checkouts extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['title', 'price'];
+    protected $fillable = [
+        'camp_id', 
+        'user_id', 
+        'card_number', 
+        'expired', 
+        'cvc', 
+        'is_paid'
+    ];
 }
