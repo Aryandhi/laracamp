@@ -22,7 +22,7 @@ class CheckoutController extends Controller
      */
     public function create(Camps $camps)
     {
-        return $camps;
+        // return $camps;
         return view('checkout', [
             'camps' => $camps
         ]);
@@ -31,9 +31,10 @@ class CheckoutController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, Camps $camps)
     {
-        //
+        // return $camps;
+        return $request->all();
     }
 
     /**
