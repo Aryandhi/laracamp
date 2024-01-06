@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Models\Camps;
-use App\Models\Checkouts;
+use App\Models\Camp;
+use App\Models\Checkout;
 use Illuminate\Http\Request;
 
 class CheckoutController extends Controller
@@ -20,7 +20,7 @@ class CheckoutController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Camps $camps)
+    public function create(Camp $camps)
     {
         // return $camps;
         return view('checkout', [
@@ -31,7 +31,7 @@ class CheckoutController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, Camps $camps)
+    public function store(Request $request, Camp $camps)
     {
         // return $camps;
         return $request->all();
@@ -40,7 +40,7 @@ class CheckoutController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Checkouts $checkout)
+    public function show(Checkout $checkout)
     {
         //
     }
@@ -48,7 +48,7 @@ class CheckoutController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Checkouts $checkout)
+    public function edit(Checkout $checkout)
     {
         //
     }
@@ -56,7 +56,7 @@ class CheckoutController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Checkouts $checkout)
+    public function update(Request $request, Checkout $checkout)
     {
         //
     }
@@ -64,7 +64,7 @@ class CheckoutController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Checkouts $checkout)
+    public function destroy(Checkout $checkout)
     {
         //
     }
