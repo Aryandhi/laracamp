@@ -3,11 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Checkout;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-    function dashboard()
+    public function dashboard()
     {
-        return view('user.dashboard');
+        $checkouts = Checkout::with('Camp')->whereUserId(Auth::id())->get();
+        return view('user.dashboard', [
+            'checkouts' => $checkouts
+        ]);
     }
 }
