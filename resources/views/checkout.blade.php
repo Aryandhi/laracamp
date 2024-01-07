@@ -45,7 +45,7 @@
                             </div>
                             <div class="mb-4">
                                 <label class="form-label">Card Number</label>
-                                <input name="cardNumber" type="number" class="form-control" />
+                                <input name="card_number" type="number" class="form-control" />
                             </div>
                             <div class="mb-5">
                                 <div class="row">
