@@ -25,7 +25,7 @@ class CheckoutController extends Controller
     public function create(Camp $camps)
     {
         // return $camps;
-        return view('checkout', [
+        return view('checkout.create', [
             'camps' => $camps
         ]);
     }
@@ -92,6 +92,6 @@ class CheckoutController extends Controller
 
     public function success() 
     {
-        return view('success_checkout');
+        return view('checkout.success');
     }
 }
