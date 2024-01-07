@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Carbon;
 
 class Checkout extends Model
 {
@@ -18,4 +19,10 @@ class Checkout extends Model
         'cvc', 
         'is_paid'
     ];
+
+    public function setExpiredAttribute($value) 
+    {
+        $this->attributes['expired'] = Carbon::parse($value)->endOfMonth()->toDateString();
+    }
+
 }

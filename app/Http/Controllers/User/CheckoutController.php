@@ -5,7 +5,9 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\Camp;
 use App\Models\Checkout;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CheckoutController extends Controller
 {
@@ -34,7 +36,26 @@ class CheckoutController extends Controller
     public function store(Request $request, Camp $camps)
     {
         // return $camps;
-        return $request->all();
+
+        // mapping request data
+        //get user_id login and camp_id selected
+        $data = $request->all();
+        $data['user_id'] = Auth::id();
+        $data['camp_id'] = $camps->id;
+
+        // update user table when checkout
+        // $user = Auth::user();
+        $user = User::find(Auth::id());
+        $user->email = $data['email'];
+        $user->name = $data['name'];
+        $user->occupation = $data['occupation'];
+        $user->save();
+
+        //create table checkouts
+        $checkout = Checkout::create($data);
+
+        return redirect(route('checkout.success'));
+
     }
 
     /**
