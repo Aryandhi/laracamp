@@ -14,6 +14,7 @@
             </div>
         </div>
         <div class="row my-5">
+            @include('components.alert')
             <table class="table">
                 <tbody>
                     @forelse ($checkouts as $checkout)
@@ -48,7 +49,7 @@
                     @empty
                         <tr>
                             <td colspan="5">
-                                <h3>No Data</h3>
+                                <h3>Kamu Belum daftar Bootcamp</h3>
                             </td>
                         </tr>
                     @endforelse
