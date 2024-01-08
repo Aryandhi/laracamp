@@ -8,6 +8,7 @@ use App\Models\Checkout;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\User\Checkout\Store;
 
 class CheckoutController extends Controller
 {
@@ -36,7 +37,7 @@ class CheckoutController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, Camp $camps)
+    public function store(Store $request, Camp $camps)
     {
         // return $camps;
 
