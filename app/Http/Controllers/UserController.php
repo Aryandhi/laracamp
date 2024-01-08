@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
-use Auth;
+use Illuminate\Support\Facades\Auth;
+// use Auth;
 
 class UserController extends Controller
 {
@@ -17,7 +18,7 @@ class UserController extends Controller
     }
 
     public function handleProviderCallback() {
-        $callback = Socialite::driver('google')->stateless()->user();
+        $callback = Socialite::driver('google')->user();
         $data = [
             'name'=> $callback->getName(),
             'email'=> $callback->getEmail(),
@@ -26,8 +27,8 @@ class UserController extends Controller
         ];
 
         // firstOrCreate for check email existing, when found same email system don't save data
-        $user = User::firstOrCreate(['email' => $data['email']], $data);
-        Auth::login($user, true); //process login
+            $user = User::firstOrCreate(['email' => $data['email']], $data);
+            Auth::login($user, true); //process login
 
         return redirect(route('welcome'));
     }
