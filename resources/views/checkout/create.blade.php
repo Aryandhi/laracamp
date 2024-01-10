@@ -40,15 +40,24 @@
                             </div>
                             <div class="mb-4">
                                 <label class="form-label">Email Address</label>
-                                <input name="email" type="email" class="form-control" value={{Auth::user()->email}} />
+                                <input name="email" type="text" class="form-control {{ $errors->has('email') ? 'is-invalid' : ''}}" value="{{Auth::user()->email}}" />
+                                @if ($errors->has('email'))
+                                    <p class="text-danger">{{$errors->first('email')}}</p>
+                                @endif
                             </div>
                             <div class="mb-4">
                                 <label class="form-label">Occupation</label>
-                                <input name="occupation" type="text" class="form-control" value="{{Auth::user()->occupation}}" />
+                                <input name="occupation" type="text" class="form-control {{ $errors->has('occupation') ? 'is-invalid' : ''}}" value="{{old('occupation') ? : Auth::user()->occupation}}" />
+                                @if ($errors->has('occupation'))
+                                    <p class="text-danger">{{$errors->first('occupation')}}</p>
+                                @endif
                             </div>
                             <div class="mb-4">
                                 <label class="form-label">Card Number</label>
-                                <input name="card_number" type="number" class="form-control" />
+                                <input name="card_number" type="number" class="form-control {{$errors->has('card_number') ? 'is_invalid' : ''}}" value="{{old('card_number') ? : ''}}"/>
+                                @if ($errors->has('card_number'))
+                                    <p class="text-danger">{{$errors->first('card_number')}}</p>
+                                @endif
                             </div>
                             <div class="mb-5">
                                 <div class="row">
