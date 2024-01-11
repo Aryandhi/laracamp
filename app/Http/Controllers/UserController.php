@@ -5,8 +5,12 @@ use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-// use Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\User\AfterRegister;
 
+// use Auth;
+// use Mail;
+// use Illuminate\Mail\Mailable;
 class UserController extends Controller
 {
     public function login() {
@@ -26,8 +30,13 @@ class UserController extends Controller
             'email_verified_at'=> date('Y-m-d H:i:s', time())
         ];
 
-        // firstOrCreate for check email existing, when found same email system don't save data
-            $user = User::firstOrCreate(['email' => $data['email']], $data);
+            // firstOrCreate for check email existing, when found same email system don't save data
+            // $user = User::firstOrCreate(['email' => $data['email']], $data);
+            $user = User::whereEmail($data['email'])->first();
+            if (!$user) {
+                $user = User::create($data);
+                Mail::to($user->email)->send(new AfterRegister($user));
+            }
             Auth::login($user, true); //process login
 
         return redirect(route('welcome'));
