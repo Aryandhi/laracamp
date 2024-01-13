@@ -1,13 +1,13 @@
 <?php
 
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\User\DashboardController as UserDashboard;
-use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\User\DashboardController as UserDashboard;
+use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
+use App\Http\Controllers\Admin\CheckoutController as AdminCheckout;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -52,6 +52,9 @@ Route::middleware('auth')->group(function () {
     // admin dashboard - grouping route
     Route::prefix('admin/dashboard')->namespace('Admin')->name('admin.')->middleware('ensureUserRole:admin')->group(function() {
         Route::get('/', [AdminDashboard::class, 'index'])->name('dashboard');
+
+        //admin set to paid
+        Route::post('checkout/{checkout}', [AdminCheckout::class, 'update'])->name('checkout.update');
     });
 });
 
