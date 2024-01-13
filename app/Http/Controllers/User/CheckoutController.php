@@ -22,7 +22,7 @@ class CheckoutController extends Controller
     {
         if ($camps->isRegistered) {
             $request->session()->put('error', "You already registered {$camps->title}");
-            return redirect(route('dashboard'));
+            return redirect(route('user.dashboard'));
         }
         return view('checkout.create', [
             'camps' => $camps,
