@@ -14,13 +14,13 @@ class Checkout extends Model
 
     protected $fillable = [
         'camp_id', 
-        'user_id', 
-        'card_number', 
-        'expired', 
-        'cvc', 
-        'is_paid'
+        'user_id',
+        'payment_status',
+        'midtrans_url',
+        'midtrans_booking_code',
     ];
 
+    // usable when setting expired credit_card
     public function setExpiredAttribute($value) 
     {
         $this->attributes['expired'] = Carbon::parse($value)->endOfMonth()->toDateString();
